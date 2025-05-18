@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Semangat Buat Aqilah!</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      padding-top: 100px;
+      color: #444;
+      overflow: hidden;
+      background: linear-gradient(to right, #ffd6e0, #ffeacb);
+    }
+
+    .popup {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      margin: 20px auto;
+      width: 80%;
+      max-width: 400px;
+      box-shadow: 0px 4px 20px rgba(0,0,0,0.1);
+      animation: fadeIn 0.8s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #ff8fab;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    /* ANIMASI LOVE 💕 */
+    .heart {
+      position: fixed;
+      top: -20px;
+      font-size: 20px;
+      animation: fall linear infinite;
+      color: #ff4d88;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>HAIII SAYANGGKUU AQILAH CANTIKKKK 💖</h1>
+  <div id="message-box" class="popup"></div>
+  <button onclick="nextMessage()">Lihat Lagi!</button>
+
+  <script>
+    const messages = [
+      "haloo, tadinya mau semangatin buat belajar kimia, eh karena kelamaan kamu udah mau belajar duluan hahaha 🧪💥",
+      "By the wayyy, maafin akuu yaa perihal tadiii 😢💗",
+      "yukk jangan ngantukk belajarr yaa sayangg 📚✨",
+      "cucii mukaa biar nantii ga ngantuk dan bisa  belajar banyakkk 😴📉",
+      "kalo mau ditemeninn bilang aku yaa sayangg, tidurrr jangann kepagiann 🤗💬",
+      "I LOVE YOUUU SEMANGATT SAYANGKUUU 💘🔥",
+      "Maaf banget bikinnya lama tapi isinya cuma ginian :("
+    ];
+
+    let index = 0;
+
+    function nextMessage() {
+      const box = document.getElementById("message-box");
+      box.textContent = messages[index];
+      index = (index + 1) % messages.length;
+    }
+
+    window.onload = function() {
+      nextMessage();
+      // Tambah love setiap 300ms
+      setInterval(() => {
+        const heart = document.createElement("div");
+        heart.className = "heart";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = (2 + Math.random() * 3) + "s"; // 2 - 5s
+        heart.textContent = "💖";
+        document.body.appendChild(heart);
+
+        setTimeout(() => heart.remove(), 5000);
+      }, 300);
+    };
+  </script>
+</body>
+</html>
